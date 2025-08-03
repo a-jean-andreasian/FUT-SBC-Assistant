@@ -1,4 +1,4 @@
-import pyautogui
+from lib import pyautogui
 
 print("Move your mouse. Press Ctrl+C to stop.")
 try:

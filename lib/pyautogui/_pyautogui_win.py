@@ -4,8 +4,8 @@
 
 import ctypes
 import ctypes.wintypes
-import pyautogui
-from pyautogui import LEFT, MIDDLE, RIGHT
+from lib import pyautogui
+from lib.pyautogui import LEFT, MIDDLE, RIGHT
 
 import sys
 if sys.platform !=  'win32':

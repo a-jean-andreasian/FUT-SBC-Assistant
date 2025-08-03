@@ -1,10 +1,10 @@
 # NOTE - It is a known issue that the keyboard-related functions don't work on Ubuntu VMs in Virtualbox.
 
-import pyautogui
+from lib import pyautogui
 import sys
 import os
 import subprocess
-from pyautogui import LEFT, MIDDLE, RIGHT
+from lib.pyautogui import LEFT, MIDDLE, RIGHT
 
 from Xlib.display import Display
 from Xlib import X

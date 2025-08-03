@@ -2,7 +2,15 @@
 
 This is an automation script for SBCs (Squad Building Challenges) in FIFA Ultimate Team (FUT) using the AutoSBC extension.
 
-## Demo
+---
+## Current version: v1.1
+
+Types of SBCs supported:
+- **83+ Player Pick** 
+- **84+ TOTW Upgrade**
+
+---
+## Demo (v1.0.0)
 
 Watch the demo video to see it in action:
 
@@ -31,7 +39,12 @@ Watch the demo video to see it in action:
 
 4. Download Python programming language from [python.org](https://www.python.org/downloads/) and install it. Just click "Next" on all steps.
 
-5. Open cmd and navigate to the extracted folder:
+5. Organize the "Favorite SBCs" as follows:
+
+![sbc_layout.png](media/sbc_layout.png)
+   - The layout is **important** for the script to work correctly!
+
+6. Open cmd and navigate to the extracted folder:
    ```bash
    cd path\to\extracted\folder
    ```
@@ -40,7 +53,12 @@ Watch the demo video to see it in action:
    python main.py
    ```
 
-7. Alt+Tab to the FC companion browser window. And enjoy.
+7. Enter:
+    - **1** or press **Enter**: for 83+ Player Pick
+    - **2**: for 84+ TOTW Upgrade
+
+
+8. Alt+Tab to the FC companion browser window. And enjoy.
 
 #### To interrupt the script: **move the mouse to the top left corner of the screen.**
 

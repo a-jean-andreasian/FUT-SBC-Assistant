@@ -7,8 +7,8 @@ except:
     assert False, "You must first install pyobjc-core and pyobjc: https://pyautogui.readthedocs.io/en/latest/install.html"
 import AppKit
 
-import pyautogui
-from pyautogui import LEFT, MIDDLE, RIGHT
+from lib import pyautogui
+from lib.pyautogui import LEFT, MIDDLE, RIGHT
 
 if sys.platform !=  'darwin':
     raise Exception('The pyautogui_osx module should only be loaded on an OS X system.')
