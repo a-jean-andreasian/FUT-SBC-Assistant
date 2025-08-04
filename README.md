@@ -3,11 +3,18 @@
 This is an automation script for SBCs (Squad Building Challenges) in FIFA Ultimate Team (FUT) using the AutoSBC extension.
 
 ---
-## Current version: v1.1
+## Current version: v1.2
 
 Types of SBCs supported:
-- **83+ Player Pick** 
-- **84+ TOTW Upgrade**
+- Option 1: **83+ Player Pick** 
+- Option 2: **84+ TOTW Upgrade** (added in v1.1)
+- Option 3: **89 OVR Squadshifter** (added in v1.2)
+
+
+- Optionally you can manually pass the `min OVR` and the `option`: 
+  ```bash
+  python main.py --option 3 --min-ovr 89
+  ```
 
 ---
 ## Demo (v1.0.0)

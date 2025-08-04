@@ -9,7 +9,13 @@ WAIT_FOR_BUILD_COMPLETE = 3  # seconds after clicking build
 
 class AvailableSBCs:
     TOTW = "TOTW"
+    TOTW_SBC_CELL = 730, 758
+
     EIGHT_THREE_PLUS = "83+"
+    EIGHT_THREE_SBC_CELL = 724, 432
+
+    EIGHTY_NINE_PLUS = "89+"
+    EIGHTY_NINE_SBC_CELL = 1218, 750
 
 
 # === General SBC Functions ===
@@ -20,19 +26,25 @@ class SBC:
     WAIT_AFTER_SUBMIT = 2  # wait after submitting SBC
     WAIT_AFTER_CLAIM = 0.5  # wait after claiming SBC
 
-    # Coordinates for SBC elements
-    TOTW_SBC_CELL = 730, 758
     SUBMIT_BUTTON = 1427, 989
     CLAIM_BUTTON = 955, 765
 
     @classmethod
     def open_sbc(cls, sbc_type: str):
         if sbc_type == AvailableSBCs.TOTW:
-            pyautogui.moveTo(cls.TOTW_SBC_CELL)
-            pyautogui.click()
+            sbc_cell: tuple[int, int] = AvailableSBCs.TOTW_SBC_CELL
+
+        elif sbc_type == AvailableSBCs.EIGHTY_NINE_PLUS:
+            sbc_cell: tuple[int, int] = AvailableSBCs.EIGHTY_NINE_SBC_CELL
+
+        elif sbc_type == AvailableSBCs.EIGHT_THREE_PLUS:
+            sbc_cell: tuple[int, int] = AvailableSBCs.EIGHTY_NINE_SBC_CELL
+
         else:
             raise ValueError(f"Unsupported SBC type: {sbc_type}")
 
+        pyautogui.moveTo(sbc_cell)
+        pyautogui.click()
         time.sleep(cls.WAIT_FOR_SBC_OPEN)  # Wait for the SBC to open
 
     @classmethod
@@ -65,9 +77,14 @@ class SquadBuilder:
     """
 
     SQUAD_BUILDER_BUTTON = 1643, 876
-    IGNORE_POSITION_SLIDER_ON = 1792, 589
+    IGNORE_POSITION_SLIDER_ON = 1789, 590
+
+    SORT_BY_DROPDOWN = 1686, 660
+    SORT_BY_LOW_TO_HIGH = 1635, 850
 
     MAX_OVR_CELL = 1726, 864
+    MIN_OVR_CELL = 1529, 858
+
     OUTSIDE_BOX = 1867, 759
 
     BUILD_BUTTON = 1717, 985
@@ -80,6 +97,7 @@ class SquadBuilder:
 
     @classmethod
     def click_on_squad_builder(cls):
+        """Clicks on 'Use Squad Builder' button."""
         pyautogui.moveTo(cls.SQUAD_BUILDER_BUTTON)
         pyautogui.click()
 
@@ -88,22 +106,45 @@ class SquadBuilder:
     @classmethod
     def click_on_ignore_position_slider(cls):
         pyautogui.moveTo(cls.IGNORE_POSITION_SLIDER_ON)
+        cls._wait_after_interaction()
         pyautogui.click()
 
         cls._wait_after_interaction()
 
     @classmethod
     def sort_low_to_high(cls):
-        ...  # To be implemented later
+        cls._wait_after_interaction()
+
+        pyautogui.moveTo(cls.SORT_BY_DROPDOWN)
+        cls._wait_after_interaction()
+        pyautogui.click()
+
+        pyautogui.moveTo(cls.SORT_BY_LOW_TO_HIGH)
+        cls._wait_after_interaction()
+        pyautogui.click()
+
 
     @classmethod
     def set_max_ovr(cls, ovr):
         pyautogui.moveTo(cls.MAX_OVR_CELL)
+        time.sleep(cls.PAUSES_WITHIN_SQUAD_BUILDER)
         pyautogui.click()
         pyautogui.write(str(ovr), interval=0.05)
 
         cls._wait_after_interaction()
         cls._click_outside_the_box()  # Click outside the box to save the input
+
+    @classmethod
+    def set_min_ovr(cls, ovr):
+        """ Sets the minimum OVR in the Squad Builder. """
+        pyautogui.moveTo(cls.MIN_OVR_CELL)
+        time.sleep(cls.PAUSES_WITHIN_SQUAD_BUILDER)
+        pyautogui.click()
+        pyautogui.write(str(ovr), interval=0.05)
+
+        cls._wait_after_interaction()
+        cls._click_outside_the_box()  # Click outside the box to save the input
+
 
     @classmethod
     def _click_outside_the_box(cls):
