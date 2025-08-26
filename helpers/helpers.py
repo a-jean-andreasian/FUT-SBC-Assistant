@@ -7,12 +7,30 @@ SQUAD_BUILDER_WAIT = 2  # seconds
 WAIT_FOR_BUILD_COMPLETE = 3  # seconds after clicking build
 
 
+class AutoSBC:
+    LOGO = 213, 315
+    BUILD = 956, 725
+
+    @classmethod
+    def click_on_logo(cls, wait_time=0.2):
+        pyautogui.moveTo(cls.LOGO)
+        pyautogui.click()
+        time.sleep(wait_time)
+
+    @classmethod
+    def click_on_build(cls, wait_time=2):
+        pyautogui.moveTo(cls.BUILD)
+        pyautogui.click()
+        time.sleep(wait_time)  # Wait for the build to complete
+
+
+
 class AvailableSBCs:
     TOTW = "TOTW"
     TOTW_SBC_CELL = 730, 758
 
     EIGHT_THREE_PLUS = "83+"
-    EIGHT_THREE_SBC_CELL = 724, 432
+    EIGHT_THREE_SBC_CELL = 732, 451
 
     EIGHTY_NINE_PLUS = "89+"
     EIGHTY_NINE_SBC_CELL = 1218, 750
@@ -30,6 +48,10 @@ class SBC:
     CLAIM_BUTTON = 955, 765
 
     @classmethod
+    def wait_for_sbc_to_open(cls):
+        time.sleep(cls.WAIT_FOR_SBC_OPEN)
+
+    @classmethod
     def open_sbc(cls, sbc_type: str):
         if sbc_type == AvailableSBCs.TOTW:
             sbc_cell: tuple[int, int] = AvailableSBCs.TOTW_SBC_CELL
@@ -38,7 +60,7 @@ class SBC:
             sbc_cell: tuple[int, int] = AvailableSBCs.EIGHTY_NINE_SBC_CELL
 
         elif sbc_type == AvailableSBCs.EIGHT_THREE_PLUS:
-            sbc_cell: tuple[int, int] = AvailableSBCs.EIGHTY_NINE_SBC_CELL
+            sbc_cell: tuple[int, int] = AvailableSBCs.EIGHT_THREE_SBC_CELL
 
         else:
             raise ValueError(f"Unsupported SBC type: {sbc_type}")
