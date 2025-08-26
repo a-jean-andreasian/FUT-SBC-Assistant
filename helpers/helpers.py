@@ -48,8 +48,11 @@ class SBC:
     CLAIM_BUTTON = 955, 765
 
     @classmethod
-    def wait_for_sbc_to_open(cls):
-        time.sleep(cls.WAIT_FOR_SBC_OPEN)
+    def wait_for_sbc_to_open(cls, wait_time: int = None):
+        if wait_time is not None:
+            time.sleep(wait_time)
+        else:
+            time.sleep(cls.WAIT_FOR_SBC_OPEN)
 
     @classmethod
     def open_sbc(cls, sbc_type: str):

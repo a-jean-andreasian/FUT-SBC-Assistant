@@ -5,7 +5,7 @@ from helpers import AutoSBC, AvailableSBCs, SBC
 def sbc_script():
     SBC.initial_wait()
     SBC.open_sbc(sbc_type=AvailableSBCs.EIGHT_THREE_PLUS)
-    SBC.wait_for_sbc_to_open()
+    SBC.wait_for_sbc_to_open(wait_time=2)
 
     AutoSBC.click_on_logo()
     AutoSBC.click_on_build()
