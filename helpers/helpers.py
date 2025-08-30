@@ -48,11 +48,8 @@ class SBC:
     CLAIM_BUTTON = 955, 765
 
     @classmethod
-    def wait_for_sbc_to_open(cls, wait_time: int = None):
-        if wait_time is not None:
-            time.sleep(wait_time)
-        else:
-            time.sleep(cls.WAIT_FOR_SBC_OPEN)
+    def wait_for_sbc_to_open(cls, wait_time: int = WAIT_FOR_SBC_OPEN):
+        time.sleep(wait_time)
 
     @classmethod
     def open_sbc(cls, sbc_type: str):
@@ -70,7 +67,6 @@ class SBC:
 
         pyautogui.moveTo(sbc_cell)
         pyautogui.click()
-        time.sleep(cls.WAIT_FOR_SBC_OPEN)  # Wait for the SBC to open
 
     @classmethod
     def initial_wait(cls):
