@@ -2,6 +2,8 @@
 
 This is an automation script for SBCs (Squad Building Challenges) in FIFA Ultimate Team (FUT) using the AutoSBC extension.
 
+![sbc_layout.png](https://raw.githubusercontent.com/a-jean-andreasian/FUT-SBC-Assistant/refs/heads/master/media/cover.png)
+
 ---
 ## Current version: v1.2
 
